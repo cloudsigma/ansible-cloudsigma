@@ -8,7 +8,6 @@ import json
 import sys
 import pickle
 
-default_user = 'cloudsigma'
 db_store = '/tmp/ansible-cloudsigma.db'
 
 
