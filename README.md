@@ -4,11 +4,11 @@ Ansible Dynamic Inventory Sources for CloudSigma.
 
 ## Installation
 
-This script relies on the [pycloudsigma](https://github.com/ansiblecs.pycloudsigma). Install it by running:
+This script relies on the [pycloudsigma](https://github.com/cloudsigma/pycloudsigma). Install it by running:
 
     $ pip install -r requirements.txt
 
-Next, you need to configure your credentials and data center location per the installation [instructions](https://github.com/ansiblecs.pycloudsigma#config-file).
+Next, you need to configure your credentials and data center location per the installation [instructions](https://github.com/cloudsigma/pycloudsigma#config-file).
 
 ## Usage
 
