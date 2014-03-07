@@ -1,6 +1,25 @@
 #!/usr/bin/env python
-'''
-CloudSigma external inventory tracker for Ansible.
+# (C) CloudSigma AG
+
+DOCUMENTATION = '''
+module: cloudsigma
+short_description: A module to connect to your CloudSigma infrastructure.
+author: Viktor Petersson <viktor@cloudsigma.com>
+requirements:
+    - pycloudsigma (`pip install cloudsigma`)
+options:
+    refreshdb:
+        description:
+            - Update the local server cache
+        required: false
+    list:
+        description:
+            - Dump a list of all hosts
+        required: false
+    host:
+        description:
+            - Placeholder. Will receive an empty string JSON object.
+        required: false
 '''
 
 import cloudsigma
@@ -32,7 +51,9 @@ def list_hosts():
     def format_output():
         formatted = {}
         for i in server_db:
-            formatted[i] = [server_db[i]['ip']]
+            formatted[i] = {
+                'ansible_ssh_host': server_db[i]['ip']
+            }
         return formatted
 
     return format_output()
