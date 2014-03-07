@@ -25,7 +25,7 @@ This should return a list of all running nodes, along with their IPs.
 Finally, let's test this with ansible by running a ping against the server `ansible.local`:
 
     $ ansible -i ansiblecs.py -u cloudsigma ansible.local -m ping
-    1.2.3.4 | success >> {
+    ansible.local | success >> {
     "changed": false,
     "ping": "pong"
     }
