@@ -30,12 +30,12 @@ Finally, let's test this with ansible by running a ping against the server `ansi
     "ping": "pong"
     }
 
-Success! You can now install the inventory tracker in a more permanent fashion by creating a symlink inside `/etc/ansible`:
+Success! If that worked out, let's make this your default Ansible back-end. To do this, edit `/etc/ansible/ansible.cfg` (or create it if it doesn't exist). What you need to do is to change 'hostfile' such that it points to your script. A minimal `ansible.cfg` would look like this:
 
-    $ ln -s /path/to/ansiblecs.py /etc/ansible/cloudsigma
+    [defaults]
+    hostfile = /path/to/ansiblecs.py
 
 This allows you to simply run:
 
-    $ ansible -i cloudsigma -u cloudsigma ansible.local -m ping
-
+    $ ansible -u cloudsigma ansible.local -m ping
 
