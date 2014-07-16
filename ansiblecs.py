@@ -79,7 +79,7 @@ if len(sys.argv) >= 2:
         print('Refreshing host database...')
         refresh_db()
     elif sys.argv[1] == '--list':
-        hosts = json.dumps(list_hosts())
+        hosts = json.dumps(list_hosts(), indent=2)
         print(hosts)
     elif (sys.argv[1] == '--host' and len(sys.argv) == 3):
         # Can't use `json.dumps` since it won't return
