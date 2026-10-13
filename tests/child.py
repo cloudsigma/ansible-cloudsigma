@@ -1,3 +1,8 @@
+import sys as _sys
+def _deny_network(event,args):
+ if event.startswith('socket.'):
+  raise PermissionError('offline child network denied')
+_sys.addaudithook(_deny_network)
 import sys,os,json,time,runpy
 from pathlib import Path
 src=Path(__file__).resolve().parent.parent;sys.path.insert(0,str(src));import ansiblecs as m
