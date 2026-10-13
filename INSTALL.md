@@ -1,0 +1,8 @@
+# Portable inventory migration proposal
+Python3.10/3.11/3.12. This inventory requires the accompanying unpublished SDK proposal at exact commit `494f8d312320f1b0f1a35608bc4e198b766ebf31` (cloudsigma3.0.0rc1), not a currently published PyPI package. Obtain that reviewed local checkout, verify its commit, build its wheel in the documented pinned build environment and install the verified wheel/dependency lock offline into a task-owned venv. Do NOT run a bare index install of requirements.txt expecting this rc to exist. The version line is a compatibility constraint, not distribution provenance.
+
+Install ansiblecs.py executable and invoke with PATH=<venv>/bin:/usr/bin:/bin. Public supervisor retains sys.executable -I-B. Credentials are JSON username/password on protected stdin; do not put them in argv or environment. --refreshdb outputs{}, --list modern inventory _meta/all/groups, --host returns actual hostvars or{}. Five HTTP requests across all three commands because cache reads reauthenticate profile. Only NEXT endpoint in this scoped candidate; no broader deployment claim.
+
+Private JSON cache replaces legacy shared /tmp pickle; no migration/read of that cache. Incomplete pages refuse; firstNIC IPv4 and running hosts only; collisions refuse. Credentials never cached; inventory data is intentionally private cached. See source for limits. No release, live replay or full API qualification implied.
+
+Offline: with the exact installed SDK, run python -m unittest discover -s tests -v. Fixtures synthetic only.13 methods; production source unchanged from reviewed portable candidate.
