@@ -1,1 +1,4 @@
-cloudsigma==0.3
+# Local proposal: install from the accompanying verified SDK checkout at this exact commit.
+# Not available on PyPI or necessarily a remote Git ref until source publication.
+# SDK commit: 494f8d312320f1b0f1a35608bc4e198b766ebf31
+cloudsigma==3.0.0rc1
