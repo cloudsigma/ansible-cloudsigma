@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: cloudsigma/pycloudsigma
-          ref: 494f8d312320f1b0f1a35608bc4e198b766ebf31
+          ref: e59a412db46ae5de466e78d622140b0fd6bf93c3
           path: sdk-source
           persist-credentials: false
       - name: Install hashlocked build and runtime dependencies

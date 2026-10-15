@@ -12,7 +12,12 @@ else:raise RuntimeError('network guard failed')
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 import cloudsigma
 assert 'site-packages' in cloudsigma.__file__, 'must test installed artifact'
-print(json.dumps({'python':sys.version,'SDK':cloudsigma.__file__,'SDK_SHA':hashlib.sha256(Path(cloudsigma.__file__).read_bytes()).hexdigest()}))
+sdk_source=ROOT/'sdk-source'/'src'/'cloudsigma'
+installed=Path(cloudsigma.__file__).parent
+expected={str(p.relative_to(sdk_source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sdk_source.rglob('*.py')}
+actual={str(p.relative_to(installed)):hashlib.sha256(p.read_bytes()).hexdigest() for p in installed.rglob('*.py')}
+assert expected and actual==expected, 'whole installed SDK differs from pinned source'
+print(json.dumps({'python':sys.version,'SDK':str(installed),'members':actual}))
 os.environ['PATH']=str(Path(sys.executable).parent)+':/usr/bin:/bin'
 os.environ['CLOUDSIGMA_CONFIG']='/dev/null'
 sys.path.insert(0,str(ROOT))
